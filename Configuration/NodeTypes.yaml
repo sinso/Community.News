@@ -1,8 +1,9 @@
 # Base Node
+
 'Community.News:AbstractNews':
-  abstract: TRUE
+  abstract: true
   superTypes:
-    'TYPO3.Neos:Document': TRUE
+    'TYPO3.Neos:Document': true
   constraints:
     nodeTypes:
       '*': false
@@ -11,39 +12,39 @@
       type: 'TYPO3.Neos:ContentCollection'
   ui:
     label: 'News Item'
-    icon: 'icon-edit'
-    group: 'news'
+    icon: icon-edit
+    group: news
     inspector:
       groups:
         general:
-          label: 'General'
+          label: General
           position: 10
         related:
-          label: 'Related'
+          label: Related
   properties:
     publishDate:
       type: DateTime
-      defaultValue: 'now'
+      defaultValue: now
       ui:
         label: 'Creation date'
         inspector:
-          group: 'general'
+          group: general
           position: 5
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        'TYPO3.Neos/Validation/DateTimeValidator': []
+        TYPO3.Neos/Validation/DateTimeValidator: {  }
     archiveDate:
       type: DateTime
       ui:
         label: 'Archive date'
         inspector:
-          group: 'general'
+          group: general
           position: 10
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        'TYPO3.Neos/Validation/DateTimeValidator': []
+        TYPO3.Neos/Validation/DateTimeValidator: {  }
     title:
       type: string
       ui:
@@ -64,11 +65,11 @@
             h3: false
             pre: false
             removeFormat: false
-          table: { }
-          list: { }
+          table: {  }
+          list: {  }
           link:
             a: true
-          alignment: { }
+          alignment: {  }
     important:
       type: boolean
       ui:
@@ -100,78 +101,76 @@
           list: {  }
           link:
             a: true
-          alignment: { }
+          alignment: {  }
     categories:
       type: references
       ui:
-        label: 'Categories'
+        label: Categories
         inspector:
-          group: 'related'
+          group: related
           editorOptions:
-            nodeTypes: ['Community.News:Category']
+            nodeTypes:
+              - 'Community.News:Category'
     author:
       type: reference
       ui:
-        label: 'Author'
+        label: Author
         inspector:
-          group: 'related'
+          group: related
           editorOptions:
-            nodeTypes: ['Community.News:Author']
-
+            nodeTypes:
+              - 'Community.News:Author'
     related:
       type: references
       ui:
         label: 'Related News'
         inspector:
-          group: 'related'
+          group: related
           editorOptions:
-            nodeTypes: ['Community.News:AbstractNews']
+            nodeTypes:
+              - 'Community.News:AbstractNews'
     tags:
       type: string
       ui:
-        label: 'Tags'
-        reloadIfChanged: FALSE
+        label: Tags
+        reloadIfChanged: false
         inspector:
-          group: 'related'
-
+          group: related
 'Community.News:News':
   superTypes:
-   'Community.News:AbstractNews': TRUE
-
-# Categories - Subcategories are reflected by creating categories within categories in the tree (see constraints)
+    'Community.News:AbstractNews': true
 'Community.News:Category':
   superTypes:
-   'TYPO3.Neos:Document': TRUE
+    'TYPO3.Neos:Document': true
   constraints:
     nodeTypes:
       '*': false
       'Community.News:Category': true
   ui:
-    label: 'Category'
-    icon: 'icon-book'
-    group: 'news'
+    label: Category
+    icon: icon-book
+    group: news
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
-
 'Community.News:Author':
   superTypes:
-   'TYPO3.Neos:Document': TRUE
-   'TYPO3.Neos.NodeTypes:ImageMixin': TRUE
+    'TYPO3.Neos:Document': true
+    'TYPO3.Neos.NodeTypes:ImageMixin': true
   constraints:
     nodeTypes:
       '*': false
   ui:
-    label: 'Author'
-    icon: 'icon-user'
-    group: 'news'
+    label: Author
+    icon: icon-user
+    group: news
     inspector:
       groups:
         general:
-          label: 'General'
+          label: General
           position: 15
         related:
-          label: 'Related'
+          label: Related
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -181,7 +180,7 @@
       ui:
         label: 'Author name'
         inspector:
-          group: 'general'
+          group: general
     email:
       type: string
       ui:
@@ -201,34 +200,32 @@
             h3: false
             pre: false
             removeFormat: false
-          table: { }
-          list: { }
+          table: {  }
+          list: {  }
           link:
             a: true
-          alignment: { }
+          alignment: {  }
         inspector:
-          group: 'general'
-
+          group: general
 'Community.News:NewsList':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'TYPO3.Neos:Content': true
   ui:
     label: 'News list'
     icon: icon-list
     inlineEditable: true
-    group: 'news'
+    group: news
   constraints:
     nodeTypes:
       '*': false
-
 'Community.News:NewsLatest':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'TYPO3.Neos:Content': true
   ui:
     label: 'News latest'
     icon: icon-list
     inlineEditable: true
-    group: 'news'
+    group: news
   constraints:
     nodeTypes:
       '*': false
