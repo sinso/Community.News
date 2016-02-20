@@ -12,7 +12,7 @@ prototype(Community.News:NewsDetail) < prototype(TYPO3.Neos:Content){
     // Relation properties
     categories = ${q(node).property('categories')}
     author = ${q(node).property('author')}
-    relnews = ${q(node).property('related')}
+    related = ${q(node).property('related')}
     tags = ${q(node).property('tags')}
 
     main = TYPO3.Neos:ContentCollection{
